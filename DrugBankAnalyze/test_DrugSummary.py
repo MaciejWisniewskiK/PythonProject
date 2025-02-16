@@ -1,7 +1,7 @@
 from DrugBankAnalyze.DrugSummary import drug_summary
 import pandas as pd
 import pytest
-from DrugBankAnalyze.test_common import is_valid_drugbank_id
+from DrugBankAnalyze.Util import is_valid_drugbank_id
 
 def test_drug_summary():
     xml_file = "data/drugbank_partial.xml"

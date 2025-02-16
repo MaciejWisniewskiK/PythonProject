@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+from DrugBankAnalyze.Util import cap_str
 
 #def get_pathways(xml_file : str) -> pd.DataFrame:
 #    tree = ET.parse(xml_file)
@@ -69,12 +70,8 @@ def visualise_drug_pathway_interactions(xml_file : str):
         for d in pathways.loc[p, "drugs"]:
             drug_pathway_df.loc[d, p] = 1
 
-    # Apply short labels
-    max_label_length = 15
-    short_labels = {col: (col if len(col) <= max_label_length else col[:max_label_length] + '...')
-                    for col in drug_pathway_df.columns}
+    short_labels = {cap_str(col, 15) for col in drug_pathway_df.columns}
     drug_pathway_df = drug_pathway_df.rename(columns=short_labels)
-
     
     plt.figure(figsize=(20, 15))
     hm = sns.heatmap(drug_pathway_df,
@@ -116,9 +113,3 @@ def number_of_pathways_histogram(xml_file : str):
     plt.xticks(rotation=90)
     plt.tight_layout()
     plt.show()
-
-        
-
-#print(get_pathways("data/drugbank_partial.xml"))
-#visualise_drug_pathway_interactions("data/drugbank_partial.xml")
-#number_of_pathways_histogram("data/drugbank_partial.xml")

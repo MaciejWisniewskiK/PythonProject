@@ -51,7 +51,6 @@ def get_prices(xml_file : str) -> pd.DataFrame:
 
         prices_per_serving = []
         for price in drug.findall("db:prices/db:price", ns):
-            desc = price.find("db:description", ns).text
             unit = price.find("db:unit", ns).text
 
             cost_obj = price.find("db:cost", ns)

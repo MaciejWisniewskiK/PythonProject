@@ -1,7 +1,7 @@
 from DrugBankAnalyze.DrugInteractions import get_drug_interactions
 import pandas as pd
 import pytest
-from DrugBankAnalyze.test_common import is_valid_drugbank_id
+from DrugBankAnalyze.Util import is_valid_drugbank_id
 
 def test_get_drug_interactions():
     xml_file = "data/drugbank_partial.xml"

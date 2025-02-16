@@ -1,5 +1,5 @@
 from DrugBankAnalyze.Prices import get_prices
-from DrugBankAnalyze.test_common import is_valid_drugbank_id
+from DrugBankAnalyze.Util import is_valid_drugbank_id
 
 def test_get_prices():
     xml_file = "data/drugbank_partial.xml"

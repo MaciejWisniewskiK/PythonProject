@@ -1,5 +1,5 @@
 from DrugBankAnalyze.Pathways import get_pathways
-from DrugBankAnalyze.test_common import is_valid_drugbank_id
+from DrugBankAnalyze.Util import is_valid_drugbank_id
 import pandas as pd
 
 def test_get_pathways():

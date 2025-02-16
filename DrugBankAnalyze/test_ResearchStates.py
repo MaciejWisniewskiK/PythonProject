@@ -1,5 +1,5 @@
 from DrugBankAnalyze.ResearchStates import get_research_states
-from DrugBankAnalyze.test_common import is_valid_drugbank_id
+from DrugBankAnalyze.Util import is_valid_drugbank_id
 
 def test_get_research_states():
     xml_file = "data/drugbank_partial.xml"
