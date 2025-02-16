@@ -8,6 +8,7 @@ def product_summary(xml_file : str, drug_id : str) -> pd.DataFrame:
     ns = {'db': 'http://www.drugbank.ca'}
 
     data = {
+        "Drug Id": [],
         "Product name": [],
         "Labeller": [],
         "NDC": [],
@@ -21,6 +22,7 @@ def product_summary(xml_file : str, drug_id : str) -> pd.DataFrame:
     for drug in root.findall("db:drug", ns):
         if drug.find("db:drugbank-id", ns).text == drug_id:
             for product in drug.findall("db:products/db:product", ns):
+                data["Drug Id"].append(drug_id)
                 data["Product name"].append(product.find("db:name", ns).text)
                 data["Labeller"].append(product.find("db:labeller", ns).text)
                 data["NDC"].append(product.find("db:ndc-product-code", ns).text)
