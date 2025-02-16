@@ -2,6 +2,7 @@
 import pandas as pd
 import xml.etree.ElementTree as ET
 import matplotlib.pyplot as plt
+from DrugBankAnalyze.Util import autopct_gen
 
 def get_research_states(xml_file : str) -> pd.DataFrame:
     tree = ET.parse(xml_file)
@@ -52,6 +53,6 @@ def research_state_pie_chart(xml_file : str) -> None:
     state_counts = df["state"].value_counts()
 
     plt.figure(figsize=(10, 10))
-    plt.pie(state_counts, labels=state_counts.index)
+    plt.pie(state_counts, autopct=autopct_gen(3), labels=state_counts.index)
     plt.title("Drug research states")
     plt.show()

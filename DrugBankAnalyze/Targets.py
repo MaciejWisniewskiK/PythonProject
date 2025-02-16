@@ -3,6 +3,7 @@ import pandas as pd
 import xml.etree.ElementTree as ET
 import matplotlib.pyplot as plt
 import seaborn as sns
+from DrugBankAnalyze.Util import autopct_gen
 
 def get_targets(xml_file : str) -> pd.DataFrame:
     tree = ET.parse(xml_file)
@@ -50,6 +51,6 @@ def get_targets(xml_file : str) -> pd.DataFrame:
 def target_cell_location_pie_chart(targets : pd.DataFrame) -> None:
     cell_location_counts = targets["Cell Location"].value_counts()
     plt.figure(figsize=(10, 10))
-    plt.pie(cell_location_counts, labels=cell_location_counts.index)
+    plt.pie(cell_location_counts, autopct=autopct_gen(), labels=cell_location_counts.index)
     plt.title("Cell Locations")
     plt.show()
