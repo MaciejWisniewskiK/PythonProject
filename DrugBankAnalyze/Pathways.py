@@ -70,10 +70,10 @@ def visualise_drug_pathway_interactions(xml_file : str):
         for d in pathways.loc[p, "drugs"]:
             drug_pathway_df.loc[d, p] = 1
 
-    short_labels = {cap_str(col, 15) for col in drug_pathway_df.columns}
-    drug_pathway_df = drug_pathway_df.rename(columns=short_labels)
+    short_labels = {col : cap_str(col, 15) for col in drug_pathway_df.columns}
+    drug_pathway_df = drug_pathway_df.rename(columns=short_labels).sort_index()
     
-    plt.figure(figsize=(20, 15))
+    plt.figure(figsize=(20, 20))
     hm = sns.heatmap(drug_pathway_df,
                     cmap="YlGnBu",
                     cbar=False,
@@ -81,10 +81,10 @@ def visualise_drug_pathway_interactions(xml_file : str):
                     linecolor='gray',
                     square=True)
 
-    hm.set_xticklabels(hm.get_xticklabels(), rotation=45, ha="right", fontsize=6)
+    hm.set_xticklabels(hm.get_xticklabels(), rotation=45, ha="right", fontsize=8)
 
     hm.set_yticks(np.arange(drug_pathway_df.shape[0]) + 0.5)
-    hm.set_yticklabels(drug_pathway_df.index, rotation=0, fontsize=6)
+    hm.set_yticklabels(drug_pathway_df.index, rotation=0, fontsize=8)
 
     plt.xlabel("Pathways")
     plt.ylabel("Drug IDs")
