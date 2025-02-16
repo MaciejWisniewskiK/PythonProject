@@ -61,9 +61,10 @@ def gene_drug_interaction_graph(xml_file : str, gene_name : str) -> None:
     for i, node in enumerate(drug_nodes):
         pos[node] = (0.5, y_positions[i])
     
-    y_positions = np.linspace(0, 1, len(product_nodes))
+    y_positions = np.linspace(0, 1, len(product_nodes) + len(drug_nodes))
     for i, node in enumerate(product_nodes):
-        pos[node] = (1, y_positions[i])
+        parent_node_nr = drug_nodes.index([n for n in G.neighbors(node)][0])
+        pos[node] = (1, y_positions[i + parent_node_nr])
         
 
     plt.figure(figsize=(10, 10))
