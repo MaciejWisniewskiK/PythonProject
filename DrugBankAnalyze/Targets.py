@@ -2,7 +2,6 @@
 import pandas as pd
 import xml.etree.ElementTree as ET
 import matplotlib.pyplot as plt
-import seaborn as sns
 from DrugBankAnalyze.Util import autopct_gen
 
 def get_targets(xml_file : str) -> pd.DataFrame:
